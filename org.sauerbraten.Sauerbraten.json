@@ -8,6 +8,7 @@
         "--share=ipc",
         "--share=network",
         "--socket=x11",
+        "--socket=wayland",
         "--socket=pulseaudio",
         /* Sauerbraten does not respect XDG base directories */
         "--persist=.sauerbraten"
@@ -21,11 +22,6 @@
         "*.la", "*.a"
     ],
     "modules": [
-        "shared-modules/glu/glu-9.json",
-        "shared-modules/SDL/SDL-1.2.15.json",
-        "shared-modules/SDL/SDL_image-1.2.12.json",
-        "shared-modules/smpeg/smpeg-0.4.5.json",
-        "shared-modules/SDL/SDL_mixer-1.2.12.json",
         {
             "name": "sauerbraten",
             "no-autogen": true,
@@ -34,8 +30,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://sourceforge.net/projects/sauerbraten/files/sauerbraten/2013_01_04/sauerbraten_2013_04_04_collect_edition_linux.tar.bz2",
-                    "sha256": "221c87af596ce11d4e0247ab55e5a448ee10737e2bf3472e46a46d77d164bfaa"
+                    "url": "https://sourceforge.net/projects/sauerbraten/files/sauerbraten/2020_11_29/sauerbraten_2020_11_29_linux.tar.bz2",
+                    "sha256": "216192dfd92c0e2e4245a763b2aafaee1e3c1062e1c3a8e7d7ea3eb3b19f150c"
                 },
                 {
                     "type": "file",
