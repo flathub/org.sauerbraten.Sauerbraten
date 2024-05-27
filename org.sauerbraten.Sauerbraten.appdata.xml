@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 Daniel Rusek <mail@asciiwolf.com> -->
-<application>
-  <id type="desktop">org.sauerbraten.Sauerbraten.desktop</id>
+<component type="desktop-application">
+  <id>org.sauerbraten.Sauerbraten</id>
   <project_license>Zlib</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <provides>
     <id>sauerbraten.desktop</id>
   </provides>
+  <launchable type="desktop-id">org.sauerbraten.Sauerbraten.desktop</launchable>
   <name>Sauerbraten</name>
+  <developer_name>Wouter van Oortmerssen and others</developer_name>
   <summary>Free multiplayer &amp; singleplayer first person shooter, the successor of the Cube FPS</summary>
   <description>
     <p>
@@ -19,8 +21,8 @@
   </description>
   <url type="homepage">http://sauerbraten.org</url>
   <screenshots>
-    <screenshot type="default">http://sauerbraten.sourceforge.net/newerer/screenshot_2128789.jpg</screenshot>
-    <screenshot>http://sauerbraten.sourceforge.net/newerer/screenshot_878348.jpg</screenshot>
+    <screenshot type="default"><image>https://sauerbraten.sourceforge.net/newerer/screenshot_2128789.jpg</image></screenshot>
+    <screenshot><image>https://sauerbraten.sourceforge.net/newerer/screenshot_878348.jpg</image></screenshot>
   </screenshots>
   <update_contact>mail@asciiwolf.com</update_contact>
   <content_rating type="oars-1.1">
@@ -57,4 +59,4 @@
     <release version="2020_11_29" date="2020-11-29"/>
     <release version="2013_04_04" date="2013-04-04"/>
   </releases>
-</application>
+</component>
