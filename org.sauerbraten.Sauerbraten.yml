@@ -1,0 +1,44 @@
+app-id: org.sauerbraten.Sauerbraten
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+finish-args:
+  - --device=dri
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --persist=.sauerbraten # Sauerbraten does not respect XDG base directories
+command: sauerbraten
+cleanup:
+  - '/include'
+  - '/lib/pkgconfig'
+  - '/share/aclocal'
+  - '/share/man'
+  - '*.la'
+  - '*.a'
+modules:
+  - name: sauerbraten
+    no-autogen: true
+    no-make-install: true
+    subdir: src
+    sources:
+      - type: archive
+        url: https://sourceforge.net/projects/sauerbraten/files/sauerbraten/2020_11_29/sauerbraten_2020_12_29_linux.tar.bz2
+        sha256: cdba7c4a47cefd30d0afdd6a912199a1384319cf1619923cb7189e72e468be70
+      - type: file
+        path: sauerbraten.sh
+      - type: file
+        path: org.sauerbraten.Sauerbraten.desktop
+      - type: file
+        path: org.sauerbraten.Sauerbraten.appdata.xml
+    post-install:
+      - install -Dm755 ../sauerbraten.sh /app/bin/sauerbraten
+      - install -Dm755 sauer_client /app/share/sauerbraten/sauerbraten
+      - install -Dm755 sauer_server /app/share/sauerbraten/sauerbraten_server
+      - cp -r ../data /app/share/sauerbraten/
+      - cp -r ../packages /app/share/sauerbraten/
+      - install -Dm644 ../data/cube.png /app/share/icons/hicolor/256x256/apps/org.sauerbraten.Sauerbraten.png
+      - install -Dm644 ../org.sauerbraten.Sauerbraten.desktop /app/share/applications/org.sauerbraten.Sauerbraten.desktop
+      - install -Dm644 ../org.sauerbraten.Sauerbraten.appdata.xml /app/share/appdata/org.sauerbraten.Sauerbraten.appdata.xml
