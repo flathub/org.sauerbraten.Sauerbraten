@@ -38,6 +38,9 @@ modules:
       cflags-override: true
       cxxflags: -O3 -fomit-frame-pointer -ffast-math
       cxxflags-override: true
+      env:
+        C_INCLUDE_PATH: /app/include/SDL2
+        CPLUS_INCLUDE_PATH: /app/include/SDL2
     subdir: src
     sources:
       - type: archive
