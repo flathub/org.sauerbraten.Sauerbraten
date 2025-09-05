@@ -1,27 +1,43 @@
 app-id: org.sauerbraten.Sauerbraten
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
+command: sauerbraten
 finish-args:
   - --device=dri
   - --share=ipc
   - --share=network
-  - --socket=x11
+  - --socket=fallback-x11
   - --socket=wayland
   - --socket=pulseaudio
   - --persist=.sauerbraten # Sauerbraten does not respect XDG base directories
-command: sauerbraten
 cleanup:
-  - '/include'
-  - '/lib/pkgconfig'
-  - '/share/aclocal'
-  - '/share/man'
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
   - '*.la'
   - '*.a'
 modules:
+
+  - name: sdl2_image
+    sources:
+      - type: archive
+        url: https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.8/SDL2_image-2.8.8.tar.gz
+        sha256: 2213b56fdaff2220d0e38c8e420cbe1a83c87374190cba8c70af2156097ce30a
+        x-checker-data:
+          type: anitya
+          project-id: 382729
+          stable-only: true
+          url-template: https://github.com/libsdl-org/SDL_image/releases/download/release-$version/SDL2_image-$version.tar.gz
+
   - name: sauerbraten
     no-autogen: true
     no-make-install: true
+    build-options:
+      cflags: -O3 -fomit-frame-pointer
+      cflags-override: true
+      cxxflags: -O3 -fomit-frame-pointer -ffast-math
+      cxxflags-override: true
     subdir: src
     sources:
       - type: archive
@@ -37,8 +53,7 @@ modules:
       - install -Dm755 ../sauerbraten.sh /app/bin/sauerbraten
       - install -Dm755 sauer_client /app/share/sauerbraten/sauerbraten
       - install -Dm755 sauer_server /app/share/sauerbraten/sauerbraten_server
-      - cp -r ../data /app/share/sauerbraten/
-      - cp -r ../packages /app/share/sauerbraten/
+      - cp -a ../data ../packages /app/share/sauerbraten
       - install -Dm644 ../data/cube.png /app/share/icons/hicolor/256x256/apps/org.sauerbraten.Sauerbraten.png
       - install -Dm644 ../org.sauerbraten.Sauerbraten.desktop /app/share/applications/org.sauerbraten.Sauerbraten.desktop
       - install -Dm644 ../org.sauerbraten.Sauerbraten.appdata.xml /app/share/appdata/org.sauerbraten.Sauerbraten.appdata.xml
