@@ -21,18 +21,22 @@
   </description>
   <url type="homepage">http://sauerbraten.org</url>
   <screenshots>
-    <screenshot type="default"><image>https://sauerbraten.sourceforge.net/new/screenshot_1297117.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/newerer/screenshot_1758308.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/newerer/screenshot_878348.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/newer/screenshot_243643.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_1198314.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/newerer/screenshot_1931460.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/newer/screenshot_612728.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_1048190.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_1070462.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_2316712.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_5280923.jpg</image></screenshot>
-    <screenshot><image>https://sauerbraten.sourceforge.net/new/screenshot_5609132.jpg</image></screenshot>
+    <screenshot type="default">
+      <caption>Gameplay 1</caption>
+      <image>https://sauerbraten.sourceforge.net/new/screenshot_1297117.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>Gameplay 2</caption>
+      <image>https://sauerbraten.sourceforge.net/newerer/screenshot_878348.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>Gameplay 3</caption>
+      <image>https://sauerbraten.sourceforge.net/new/screenshot_1070462.jpg</image>
+    </screenshot>
+    <screenshot>
+      <caption>Gameplay 4</caption>
+      <image>https://sauerbraten.sourceforge.net/new/screenshot_5609132.jpg</image>
+    </screenshot>
   </screenshots>
   <update_contact>mail@asciiwolf.com</update_contact>
   <content_rating type="oars-1.1">
