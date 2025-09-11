@@ -34,6 +34,8 @@ modules:
       - type: file
         path: sauerbraten.sh
       - type: file
+        path: sauerbraten_server.sh
+      - type: file
         path: org.sauerbraten.Sauerbraten.desktop
       - type: file
         path: org.sauerbraten.Sauerbraten.appdata.xml
@@ -41,6 +43,7 @@ modules:
         path: make-sauerbraten-find-sdl2_image.patch
     post-install:
       - install -Dm755 ../sauerbraten.sh /app/bin/sauerbraten
+      - install -Dm755 ../sauerbraten_server.sh /app/bin/sauerbraten_server
       - install -Dm755 sauer_client /app/share/sauerbraten/sauerbraten
       - install -Dm755 sauer_server /app/share/sauerbraten/sauerbraten_server
       - cp -a ../data ../packages /app/share/sauerbraten
