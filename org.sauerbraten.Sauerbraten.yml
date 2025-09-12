@@ -12,7 +12,6 @@ finish-args:
   - --socket=pulseaudio
   - --persist=.sauerbraten # Sauerbraten does not respect XDG base directories
 modules:
-
   - shared-modules/SDL2/SDL2_image.json
 
   - name: sauerbraten
