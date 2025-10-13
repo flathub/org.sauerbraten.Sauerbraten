@@ -37,7 +37,7 @@ modules:
       - type: file
         path: org.sauerbraten.Sauerbraten.desktop
       - type: file
-        path: org.sauerbraten.Sauerbraten.appdata.xml
+        path: org.sauerbraten.Sauerbraten.metainfo.xml
       - type: patch
         path: make-sauerbraten-find-sdl2_image.patch
     post-install:
@@ -48,4 +48,4 @@ modules:
       - cp -a ../data ../packages /app/share/sauerbraten
       - install -Dm644 ../data/cube.png /app/share/icons/hicolor/256x256/apps/org.sauerbraten.Sauerbraten.png
       - install -Dm644 ../org.sauerbraten.Sauerbraten.desktop /app/share/applications/org.sauerbraten.Sauerbraten.desktop
-      - install -Dm644 ../org.sauerbraten.Sauerbraten.appdata.xml /app/share/appdata/org.sauerbraten.Sauerbraten.appdata.xml
+      - install -Dm644 ../org.sauerbraten.Sauerbraten.metainfo.xml /app/share/metainfo/org.sauerbraten.Sauerbraten.metainfo.xml
