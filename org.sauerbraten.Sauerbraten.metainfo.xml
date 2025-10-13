@@ -10,7 +10,11 @@
   <launchable type="desktop-id">org.sauerbraten.Sauerbraten.desktop</launchable>
   <name>Sauerbraten</name>
   <developer_name>Wouter van Oortmerssen and others</developer_name>
-  <summary>Free multiplayer &amp; singleplayer first person shooter, the successor of the Cube FPS</summary>
+  <branding>
+    <color type="primary" scheme_preference="light">#704905</color>
+    <color type="primary" scheme_preference="dark">#402902</color>
+  </branding>
+  <summary>Free first person shooter</summary>
   <description>
     <p>
       Cube 2: Sauerbraten is a free multiplayer &amp; singleplayer first person shooter, the successor of the Cube FPS.
