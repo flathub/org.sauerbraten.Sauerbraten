@@ -1,0 +1,71 @@
+From 3d217cef120efa901759f03e0ea2031b4ed0e1e9 Mon Sep 17 00:00:00 2001
+From: user1-github <56021366+user1-github@users.noreply.github.com>
+Date: Mon, 1 Dec 2025 18:11:12 +0200
+Subject: [PATCH] Use pkg-config for library detection and add ldflags
+
+---
+ src/Makefile | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index bb15b25..05157f6 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -4,6 +4,8 @@ override CXXFLAGS+= -Wall -fsigned-char -fno-exceptions -fno-rtti
+ PLATFORM= $(shell uname -s | tr '[:lower:]' '[:upper:]')
+ PLATFORM_PREFIX= native
+ 
++PKG_CONFIG ?= pkg-config
++
+ INCLUDES= -Ishared -Iengine -Ifpsgame -Ienet/include
+ 
+ STRIP=
+@@ -65,8 +67,8 @@ CLIENT_LIBS= -F../sauerbraten.app/Contents/Frameworks/ -framework SDL2 -framewor
+ CLIENT_LIBS+= -framework SDL2_mixer -framework CoreAudio -framework AudioToolbox
+ CLIENT_LIBS+= -framework AudioUnit -framework OpenGL -framework Cocoa -lz -Lenet -lenet
+ else
+-CLIENT_INCLUDES= $(INCLUDES) -I/usr/X11R6/include `sdl2-config --cflags`
+-CLIENT_LIBS= -Lenet -lenet -L/usr/X11R6/lib -lX11 `sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lz -lGL
++CLIENT_INCLUDES= $(INCLUDES) `$(PKG_CONFIG) --cflags x11 sdl2 SDL2_image SDL2_mixer zlib gl`
++CLIENT_LIBS= -Lenet -lenet `$(PKG_CONFIG) --libs x11 sdl2 SDL2_image SDL2_mixer zlib gl`
+ endif
+ endif
+ ifeq ($(PLATFORM),LINUX)
+@@ -140,8 +142,8 @@ SERVER_INCLUDES= -DSTANDALONE $(INCLUDES) -Iinclude
+ SERVER_LIBS= -mwindows $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
+ MASTER_LIBS= $(STD_LIBS) -L$(WINBIN) -L$(WINLIB) -lzlib1 -lenet -lws2_32 -lwinmm
+ else
+-SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
+-SERVER_LIBS= -Lenet -lenet -lz
++SERVER_INCLUDES= -DSTANDALONE $(INCLUDES) `pkg-config --cflags zlib`
++SERVER_LIBS= -Lenet -lenet `pkg-config --libs zlib`
+ MASTER_LIBS= $(SERVER_LIBS)
+ endif
+ SERVER_OBJS= \
+@@ -201,22 +203,22 @@ master: $(MASTER_OBJS)
+ install: all
+ else
+ client:	libenet $(CLIENT_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o sauer_client $(CLIENT_OBJS) $(CLIENT_LIBS)
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ 	install_name_tool -add_rpath @executable_path/../Frameworks sauer_client
+ endif
+ 
+ server:	libenet $(SERVER_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o sauer_server $(SERVER_OBJS) $(SERVER_LIBS)
+ 
+ master: libenet $(MASTER_OBJS)
+-	$(CXX) $(CXXFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o sauer_master $(MASTER_OBJS) $(MASTER_LIBS)
+ 
+ shared/cube2font.o: shared/cube2font.c
+ 	$(CXX) $(CXXFLAGS) -c -o $@ $< `freetype-config --cflags`
+ 
+ cube2font: shared/cube2font.o
+-	$(CXX) $(CXXFLAGS) -o cube2font shared/cube2font.o `freetype-config --libs` -lz
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o cube2font shared/cube2font.o `freetype-config --libs` -lz
+ 
+ ifneq (,$(findstring DARWIN,$(PLATFORM)))
+ install: client
