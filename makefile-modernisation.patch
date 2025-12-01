@@ -37,8 +37,8 @@ index bb15b25..05157f6 100644
  else
 -SERVER_INCLUDES= -DSTANDALONE $(INCLUDES)
 -SERVER_LIBS= -Lenet -lenet -lz
-+SERVER_INCLUDES= -DSTANDALONE $(INCLUDES) `pkg-config --cflags zlib`
-+SERVER_LIBS= -Lenet -lenet `pkg-config --libs zlib`
++SERVER_INCLUDES= -DSTANDALONE $(INCLUDES) `$(PKG_CONFIG) --cflags zlib`
++SERVER_LIBS= -Lenet -lenet `$(PKG_CONFIG) --libs zlib`
  MASTER_LIBS= $(SERVER_LIBS)
  endif
  SERVER_OBJS= \
