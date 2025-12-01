@@ -17,14 +17,6 @@ modules:
   - name: sauerbraten
     no-autogen: true
     no-make-install: true
-    build-options:
-      cflags: -O3 -fomit-frame-pointer
-      cflags-override: true
-      cxxflags: -O3 -fomit-frame-pointer -ffast-math
-      cxxflags-override: true
-      env:
-        C_INCLUDE_PATH: /app/include/SDL2
-        CPLUS_INCLUDE_PATH: /app/include/SDL2
     subdir: src
     sources:
       - type: archive
@@ -39,7 +31,7 @@ modules:
       - type: file
         path: org.sauerbraten.Sauerbraten.metainfo.xml
       - type: patch
-        path: make-sauerbraten-find-sdl2_image.patch
+        path: makefile-modernisation.patch
     post-install:
       - install -Dm755 ../sauerbraten.sh /app/bin/sauerbraten
       - install -Dm755 ../sauerbraten_server.sh /app/bin/sauerbraten_server
