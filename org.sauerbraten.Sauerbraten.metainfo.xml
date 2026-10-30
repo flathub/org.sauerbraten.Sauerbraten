@@ -9,7 +9,9 @@
   </provides>
   <launchable type="desktop-id">org.sauerbraten.Sauerbraten.desktop</launchable>
   <name>Sauerbraten</name>
-  <developer_name>Wouter van Oortmerssen and others</developer_name>
+  <developer id="org.sauerbraten">
+    <name>Wouter van Oortmerssen and others</name>
+  </developer>
   <branding>
     <color type="primary" scheme_preference="light">#704905</color>
     <color type="primary" scheme_preference="dark">#402902</color>
@@ -24,6 +26,7 @@
     </p>
   </description>
   <url type="homepage">http://sauerbraten.org</url>
+  <url type="vcs-browser">https://sourceforge.net/p/sauerbraten/code/HEAD/tree</url>
   <screenshots>
     <screenshot type="default">
       <caption>Gameplay 1</caption>
