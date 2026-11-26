@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Sauerbraten
-Comment=Free multiplayer & singleplayer first person shooter, the successor of the Cube FPS
+Comment=Free multiplayer & singleplayer first person shooter
 Icon=org.sauerbraten.Sauerbraten
 Exec=sauerbraten
 Categories=Game;ActionGame;Shooter;
