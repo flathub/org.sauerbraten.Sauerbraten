@@ -10,7 +10,7 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --socket=pulseaudio
-  - --persist=.sauerbraten # Sauerbraten does not respect XDG base directories
+  - --persist=.sauerbraten
 modules:
   - shared-modules/SDL2/SDL2_image.json
   - shared-modules/SDL2/SDL2_mixer.json
@@ -41,5 +41,5 @@ modules:
       - install -Dm755 ../bin_unix/native_server /app/share/sauerbraten/sauerbraten_server
       - cp -a ../data ../packages /app/share/sauerbraten
       - install -Dm644 ../data/cube.png /app/share/icons/hicolor/256x256/apps/org.sauerbraten.Sauerbraten.png
-      - install -Dm644 ../org.sauerbraten.Sauerbraten.desktop /app/share/applications/org.sauerbraten.Sauerbraten.desktop
-      - install -Dm644 ../org.sauerbraten.Sauerbraten.metainfo.xml /app/share/metainfo/org.sauerbraten.Sauerbraten.metainfo.xml
+      - install -Dm644 ../org.sauerbraten.Sauerbraten.desktop -t /app/share/applications
+      - install -Dm644 ../org.sauerbraten.Sauerbraten.metainfo.xml -t /app/share/metainfo
